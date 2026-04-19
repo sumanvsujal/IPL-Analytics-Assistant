@@ -1,0 +1,458 @@
+[
+  {
+    "category": "batting_career",
+    "insight": "V Kohli has scored 8661 runs in 259 IPL matches at a strike rate of 132.86 and batting average of 39.91, with 772 fours and 292 sixes. Boundary percentage: 16.3%.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "V Kohli"
+    }
+  },
+  {
+    "category": "batting_career",
+    "insight": "RG Sharma has scored 7046 runs in 266 IPL matches at a strike rate of 132.10 and batting average of 29.98, with 640 fours and 303 sixes. Boundary percentage: 17.7%.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "RG Sharma"
+    }
+  },
+  {
+    "category": "batting_career",
+    "insight": "S Dhawan has scored 6769 runs in 221 IPL matches at a strike rate of 127.14 and batting average of 36.39, with 768 fours and 153 sixes. Boundary percentage: 17.3%.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "S Dhawan"
+    }
+  },
+  {
+    "category": "batting_career",
+    "insight": "DA Warner has scored 6565 runs in 184 IPL matches at a strike rate of 139.77 and batting average of 42.08, with 663 fours and 236 sixes. Boundary percentage: 19.1%.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "DA Warner"
+    }
+  },
+  {
+    "category": "batting_career",
+    "insight": "SK Raina has scored 5528 runs in 200 IPL matches at a strike rate of 136.73 and batting average of 34.34, with 506 fours and 203 sixes. Boundary percentage: 17.5%.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "SK Raina"
+    }
+  },
+  {
+    "category": "batting_strike_rate",
+    "insight": "PD Salt has a career IPL strike rate of 175.71 across 601 balls, scoring 1056 runs with 56 sixes.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "PD Salt"
+    }
+  },
+  {
+    "category": "batting_strike_rate",
+    "insight": "AD Russell has a career IPL strike rate of 174.18 across 1522 balls, scoring 2651 runs with 223 sixes.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "AD Russell"
+    }
+  },
+  {
+    "category": "batting_strike_rate",
+    "insight": "TM Head has a career IPL strike rate of 170.03 across 674 balls, scoring 1146 runs with 55 sixes.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "TM Head"
+    }
+  },
+  {
+    "category": "batting_strike_rate",
+    "insight": "H Klaasen has a career IPL strike rate of 169.72 across 872 balls, scoring 1480 runs with 89 sixes.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "H Klaasen"
+    }
+  },
+  {
+    "category": "batting_strike_rate",
+    "insight": "N Pooran has a career IPL strike rate of 168.98 across 1357 balls, scoring 2293 runs with 167 sixes.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "N Pooran"
+    }
+  },
+  {
+    "category": "batting_average",
+    "insight": "B Sai Sudharsan has a career IPL batting average of 52.74 (1793 runs, 34 dismissals in 40 matches).",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "B Sai Sudharsan"
+    }
+  },
+  {
+    "category": "batting_average",
+    "insight": "KL Rahul has a career IPL batting average of 47.47 (5222 runs, 110 dismissals in 135 matches).",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "KL Rahul"
+    }
+  },
+  {
+    "category": "batting_average",
+    "insight": "DP Conway has a career IPL batting average of 45.00 (1080 runs, 24 dismissals in 28 matches).",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "DP Conway"
+    }
+  },
+  {
+    "category": "batting_average",
+    "insight": "AB de Villiers has a career IPL batting average of 42.31 (5162 runs, 122 dismissals in 170 matches).",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "AB de Villiers"
+    }
+  },
+  {
+    "category": "batting_average",
+    "insight": "JP Duminy has a career IPL batting average of 42.27 (2029 runs, 48 dismissals in 75 matches).",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "JP Duminy"
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2016, V Kohli scored 973 runs in 16 matches at SR 152.03, with a highest score of 113.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "V Kohli",
+      "season": 2016
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2023, Shubman Gill scored 890 runs in 17 matches at SR 157.80, with a highest score of 129.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "Shubman Gill",
+      "season": 2023
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2022, JC Buttler scored 863 runs in 17 matches at SR 149.05, with a highest score of 116.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "JC Buttler",
+      "season": 2022
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2016, DA Warner scored 848 runs in 17 matches at SR 151.43, with a highest score of 93.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "DA Warner",
+      "season": 2016
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2025, B Sai Sudharsan scored 759 runs in 15 matches at SR 156.17, with a highest score of 108.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "B Sai Sudharsan",
+      "season": 2025
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2024, V Kohli scored 741 runs in 15 matches at SR 154.70, with a highest score of 113.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "V Kohli",
+      "season": 2024
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2018, KS Williamson scored 735 runs in 17 matches at SR 142.44, with a highest score of 84.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "KS Williamson",
+      "season": 2018
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2012, CH Gayle scored 733 runs in 14 matches at SR 160.75, with a highest score of 128.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "CH Gayle",
+      "season": 2012
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2013, MEK Hussey scored 733 runs in 17 matches at SR 129.51, with a highest score of 95.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "MEK Hussey",
+      "season": 2013
+    }
+  },
+  {
+    "category": "batting_season",
+    "insight": "In IPL 2023, F du Plessis scored 730 runs in 14 matches at SR 153.68, with a highest score of 84.",
+    "data_source": "batter_season_stats",
+    "entities": {
+      "player": "F du Plessis",
+      "season": 2023
+    }
+  },
+  {
+    "category": "batting_dot_balls",
+    "insight": "H Klaasen has one of the lowest dot ball percentages in IPL history at 22.9% (min 500 balls), with a strike rate of 169.72.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "H Klaasen"
+    }
+  },
+  {
+    "category": "batting_dot_balls",
+    "insight": "B Sai Sudharsan has one of the lowest dot ball percentages in IPL history at 27.0% (min 500 balls), with a strike rate of 145.89.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "B Sai Sudharsan"
+    }
+  },
+  {
+    "category": "batting_dot_balls",
+    "insight": "DA Miller has one of the lowest dot ball percentages in IPL history at 28.5% (min 500 balls), with a strike rate of 138.60.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "DA Miller"
+    }
+  },
+  {
+    "category": "batting_dot_balls",
+    "insight": "AB de Villiers has one of the lowest dot ball percentages in IPL history at 28.8% (min 500 balls), with a strike rate of 151.69.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "AB de Villiers"
+    }
+  },
+  {
+    "category": "batting_dot_balls",
+    "insight": "RM Patidar has one of the lowest dot ball percentages in IPL history at 28.9% (min 500 balls), with a strike rate of 154.31.",
+    "data_source": "batter_career_stats",
+    "entities": {
+      "player": "RM Patidar"
+    }
+  },
+  {
+    "category": "bowling_career",
+    "insight": "YS Chahal has taken 217 IPL wickets in 172 matches at an economy of 7.73 and bowling average of 22.51.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "YS Chahal"
+    }
+  },
+  {
+    "category": "bowling_career",
+    "insight": "B Kumar has taken 198 IPL wickets in 190 matches at an economy of 7.40 and bowling average of 26.30.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "B Kumar"
+    }
+  },
+  {
+    "category": "bowling_career",
+    "insight": "SP Narine has taken 192 IPL wickets in 187 matches at an economy of 6.66 and bowling average of 25.12.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "SP Narine"
+    }
+  },
+  {
+    "category": "bowling_career",
+    "insight": "PP Chawla has taken 189 IPL wickets in 191 matches at an economy of 7.83 and bowling average of 26.59.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "PP Chawla"
+    }
+  },
+  {
+    "category": "bowling_career",
+    "insight": "DJ Bravo has taken 183 IPL wickets in 158 matches at an economy of 8.00 and bowling average of 22.73.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "DJ Bravo"
+    }
+  },
+  {
+    "category": "bowling_economy",
+    "insight": "A Kumble has a career economy of 6.34 in IPL across 160.8 overs, with 45 wickets and dot ball % of 38.8%.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "A Kumble"
+    }
+  },
+  {
+    "category": "bowling_economy",
+    "insight": "M Muralitharan has a career economy of 6.42 in IPL across 254.0 overs, with 63 wickets and dot ball % of 39.2%.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "M Muralitharan"
+    }
+  },
+  {
+    "category": "bowling_economy",
+    "insight": "GD McGrath has a career economy of 6.50 in IPL across 54.0 overs, with 12 wickets and dot ball % of 47.2%.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "GD McGrath"
+    }
+  },
+  {
+    "category": "bowling_economy",
+    "insight": "DW Steyn has a career economy of 6.56 in IPL across 362.7 overs, with 97 wickets and dot ball % of 46.8%.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "DW Steyn"
+    }
+  },
+  {
+    "category": "bowling_economy",
+    "insight": "RE van der Merwe has a career economy of 6.59 in IPL across 73.8 overs, with 21 wickets and dot ball % of 33.4%.",
+    "data_source": "bowler_career_stats",
+    "entities": {
+      "player": "RE van der Merwe"
+    }
+  },
+  {
+    "category": "phase_analysis",
+    "insight": "In recent IPL seasons (2023-2025), the Death phase averages a run rate of 10.30, boundary% of 23.2%, dot ball% of 28.1%, and 0.500 wickets per over.",
+    "data_source": "phase_season_stats",
+    "entities": {
+      "phase": "Death"
+    }
+  },
+  {
+    "category": "phase_analysis",
+    "insight": "In recent IPL seasons (2023-2025), the Middle phase averages a run rate of 8.48, boundary% of 16.8%, dot ball% of 29.3%, and 0.280 wickets per over.",
+    "data_source": "phase_season_stats",
+    "entities": {
+      "phase": "Middle"
+    }
+  },
+  {
+    "category": "phase_analysis",
+    "insight": "In recent IPL seasons (2023-2025), the Powerplay phase averages a run rate of 8.91, boundary% of 24.2%, dot ball% of 42.2%, and 0.250 wickets per over.",
+    "data_source": "phase_season_stats",
+    "entities": {
+      "phase": "Powerplay"
+    }
+  },
+  {
+    "category": "phase_trends",
+    "insight": "Six-hitting in the Powerplay phase has increased from 3.29% (early seasons) to 5.98% (recent seasons), a change of 2.69 percentage points.",
+    "data_source": "phase_season_stats",
+    "entities": {
+      "phase": "Powerplay"
+    }
+  },
+  {
+    "category": "phase_trends",
+    "insight": "Six-hitting in the Middle phase has increased from 3.75% (early seasons) to 6.66% (recent seasons), a change of 2.91 percentage points.",
+    "data_source": "phase_season_stats",
+    "entities": {
+      "phase": "Middle"
+    }
+  },
+  {
+    "category": "phase_trends",
+    "insight": "Six-hitting in the Death phase has increased from 6.75% (early seasons) to 10.61% (recent seasons), a change of 3.86 percentage points.",
+    "data_source": "phase_season_stats",
+    "entities": {
+      "phase": "Death"
+    }
+  },
+  {
+    "category": "venue_analysis",
+    "insight": "Eden Gardens has hosted 77 IPL matches with an average first innings score of 160 and average run rate of 7.89. Bat-first win%: 41.6%, chase win%: 58.4%.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "Eden Gardens"
+    }
+  },
+  {
+    "category": "venue_analysis",
+    "insight": "Wankhede Stadium has hosted 73 IPL matches with an average first innings score of 166 and average run rate of 7.98. Bat-first win%: 48.6%, chase win%: 51.4%.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "Wankhede Stadium"
+    }
+  },
+  {
+    "category": "venue_analysis",
+    "insight": "M Chinnaswamy Stadium has hosted 65 IPL matches with an average first innings score of 168 and average run rate of 8.15. Bat-first win%: 41.9%, chase win%: 58.1%.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "M Chinnaswamy Stadium"
+    }
+  },
+  {
+    "category": "venue_analysis",
+    "insight": "Feroz Shah Kotla has hosted 60 IPL matches with an average first innings score of 162 and average run rate of 7.92. Bat-first win%: 47.5%, chase win%: 52.5%.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "Feroz Shah Kotla"
+    }
+  },
+  {
+    "category": "venue_analysis",
+    "insight": "Wankhede Stadium, Mumbai has hosted 52 IPL matches with an average first innings score of 177 and average run rate of 8.58. Bat-first win%: 40.4%, chase win%: 59.6%.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "Wankhede Stadium, Mumbai"
+    }
+  },
+  {
+    "category": "venue_scoring",
+    "insight": "Arun Jaitley Stadium, Delhi is one of the highest-scoring IPL venues with an average first innings score of 200 across 23 matches.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "Arun Jaitley Stadium, Delhi"
+    }
+  },
+  {
+    "category": "venue_scoring",
+    "insight": "Eden Gardens, Kolkata is one of the highest-scoring IPL venues with an average first innings score of 197 across 23 matches.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "Eden Gardens, Kolkata"
+    }
+  },
+  {
+    "category": "venue_scoring",
+    "insight": "Rajiv Gandhi International Stadium, Uppal, Hyderabad is one of the highest-scoring IPL venues with an average first innings score of 189 across 19 matches.",
+    "data_source": "venue_stats",
+    "entities": {
+      "venue": "Rajiv Gandhi International Stadium, Uppal, Hyderabad"
+    }
+  },
+  {
+    "category": "season_trends",
+    "insight": "IPL has evolved significantly from 2008 to 2025. Runs per match went from 296 to 345. Average run rate changed from 7.94 to 9.27. Six hitting percentage changed from 4.77% to 7.84%.",
+    "data_source": "season_summary",
+    "entities": {}
+  },
+  {
+    "category": "season_trends",
+    "insight": "IPL 2024 was the highest-scoring season with 351 runs per match, a run rate of 9.17, and 7.68% six-hitting rate.",
+    "data_source": "season_summary",
+    "entities": {
+      "season": 2024
+    }
+  }
+]

@@ -1,0 +1,8 @@
+# IPL Analytics — RAG Layer Dependencies
+# Install: pip install -r app/requirements.txt
+
+pandas>=2.0.0
+pyarrow>=14.0.0
+numpy>=1.24.0
+sentence-transformers>=2.7.0
+faiss-cpu>=1.7.4

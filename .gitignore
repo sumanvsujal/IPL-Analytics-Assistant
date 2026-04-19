@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs
+*.log
+
+# Model / training outputs
+finetuning/outputs/checkpoint-*/
+finetuning/outputs/**/*.bin
+finetuning/outputs/**/*.safetensors
+
+# If final adapter is too large/private, ignore it:
+# finetuning/outputs/final_adapter/
+
+# Caches / indexes
+app/services/_index/
+.pytest_cache/
+.mypy_cache/
+
+# Local artifacts
+*.tmp
+*.bak
