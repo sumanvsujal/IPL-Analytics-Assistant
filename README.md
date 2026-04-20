@@ -1,79 +1,84 @@
-IPL Analytics Assistant
+# IPL Analytics Assistant
 
-Hybrid LLM + Structured Data Intelligence System
+## Hybrid LLM + Structured Data Intelligence System
 
-Overview
+---
 
-This repository contains the full code, pipeline, and API implementation for a domain-specific AI system that answers IPL cricket analytics queries using a hybrid architecture.
+## Overview
 
-The system combines:
+This project implements a domain-specific AI system for IPL cricket analytics using a hybrid architecture.
 
-structured data retrieval
-deterministic computation
-a fine-tuned language model
+Instead of relying purely on an LLM, the system combines:
 
-It is designed to overcome a key limitation of LLMs: numerical hallucination, by separating computation from generation and grounding all outputs in structured cricket data.
+- Structured data retrieval  
+- Deterministic metric computation  
+- A fine-tuned language model (Mistral-7B + LoRA)  
 
-Project Summary
-Author: Sujal Suman
-Domain: IPL cricket analytics
-Pipeline: Hybrid (routing → retrieval → computation → generation)
-Model: Mistral-7B fine-tuned using LoRA
-Interface: FastAPI backend + Streamlit UI
-Data format: Parquet-based structured analytics tables
-Key Features
-Hybrid query pipeline (route → retrieve → compute → generate)
-Intent classification and entity extraction
-Structured retrieval over IPL datasets (batting, bowling, matchup, venue, season)
-Deterministic metric computation layer for numerical correctness
-Fine-tuned LLM for explanation and interpretation
-FastAPI backend with /chat and /debug/retrieve endpoints
-Streamlit UI for interactive querying
-Validation guardrails to prevent invalid comparisons
-Core Design Principle
+The goal is to eliminate **numerical hallucination** and ensure reliable, data-grounded answers.
 
-The system explicitly avoids using the LLM for numerical reasoning.
+---
 
-Instead:
+## Core Idea
 
-structured data handles retrieval
-deterministic logic computes all metrics
-the LLM focuses only on explanation
+Traditional LLMs are weak at numbers.
 
-This prevents hallucinated calculations and improves reliability.
+This system fixes that by separating responsibilities:
 
-Deterministic Metrics
+- Structured data → retrieval  
+- Deterministic logic → computation  
+- LLM → explanation only  
 
-The system computes the following before generation:
+This ensures every answer is **factually correct and interpretable**.
 
-strike rate
-dot-ball percentage
-scoring-ball percentage
-boundary percentage
-boundary frequency
-runs per dismissal
-balls per dismissal
+---
 
-All values passed to the model are pre-computed and verified.
+## Key Features
 
-System Architecture
-User Query  
-→ Query Router (intent + entities)  
-→ Structured Retriever / Insight Retriever  
-→ Deterministic Metrics Layer  
-→ Context Builder  
-→ Fine-tuned Generator (Mistral + LoRA)  
+- Hybrid query pipeline (route → retrieve → compute → generate)  
+- Intent classification and entity extraction  
+- Structured IPL dataset querying (batting, bowling, matchups, venues)  
+- Deterministic metric computation layer  
+- Fine-tuned LLM for explanations  
+- FastAPI backend with debugging endpoints  
+- Streamlit UI for interaction  
+- Guardrails to prevent incorrect comparisons  
+
+---
+
+## System Architecture
+
+```
+User Query
+→ Query Router (intent + entities)
+→ Structured Retriever / Insight Retriever
+→ Deterministic Metrics Layer
+→ Context Builder
+→ Fine-tuned Generator (Mistral + LoRA)
 → Answer
-Example Queries
-Who are the top IPL run scorers
-Compare JJ Bumrah and YS Chahal
-What are V Kohli’s IPL career stats
-Why is boundary percentage important
-V Kohli vs JJ Bumrah head-to-head
-Project Structure
+```
+
+---
+
+## Deterministic Metrics
+
+All metrics are computed before reaching the model:
+
+- Strike rate  
+- Dot-ball percentage  
+- Scoring-ball percentage  
+- Boundary percentage  
+- Boundary frequency  
+- Runs per dismissal  
+- Balls per dismissal  
+
+The LLM never calculates numbers.
+
+---
+
+## Project Structure
+
+```
 ipl_project/
-├── README.md
-├── .gitignore
 ├── app/
 │   ├── api/
 │   ├── services/
@@ -86,63 +91,113 @@ ipl_project/
 │   ├── configs/
 │   ├── scripts/
 │   └── outputs/
-Setup
-Install dependencies
+├── README.md
+└── .gitignore
+```
+
+---
+
+## Setup
+
+### Install dependencies
+
+```
 pip install -r app/requirements.txt
-Create environment (optional)
+```
+
+### Create virtual environment (optional)
+
+```
 python -m venv .venv
 .venv\Scripts\activate
-Run the Project
-Backend (FastAPI)
+```
+
+---
+
+## Run the Project
+
+### Start Backend (FastAPI)
+
+```
 python -m uvicorn app.api.main:app --reload --port 8000
-UI (Streamlit)
+```
+
+---
+
+### Start UI (Streamlit)
+
+```
 streamlit run app/ui/streamlit_app.py
-API Endpoints
+```
+
+---
+
+## API Endpoints
+
+### Health Check
+
+```
 GET /health
+```
 
-Checks model, adapter, and data availability
+---
 
+### Chat Endpoint
+
+Runs full pipeline:
+
+```
 POST /chat
-
-Runs full pipeline and returns answer
+```
 
 Example:
 
+```
 {
   "query": "Compare JJ Bumrah and YS Chahal"
 }
+```
+
+---
+
+### Debug Endpoint (No LLM)
+
+```
 POST /debug/retrieve
+```
 
 Returns:
+- route  
+- intent  
+- entities  
+- retrieved data  
+- constructed context  
 
-route
-intent
-entities
-retrieved data
-constructed context
+---
 
-(No LLM call)
+## Dataset
 
-Dataset
+Structured IPL analytics stored in Parquet format:
 
-The system uses structured IPL analytics tables stored in Parquet format:
+- Batter career and season stats  
+- Bowler career and season stats  
+- Batter vs bowler matchups  
+- Venue statistics  
+- Phase-wise scoring data  
+- Insight summaries  
 
-batter career and season stats
-bowler career and season stats
-matchup data (batter vs bowler)
-venue-level statistics
-phase-wise scoring data
-derived insight summaries
-Engineering Highlights
-Hybrid AI system combining structured data and LLM reasoning
-Deterministic computation layer to eliminate numeric hallucination
-Fine-tuning using LoRA for domain adaptation
-Modular pipeline with clear separation of responsibilities
-Debuggable architecture with full transparency
-Notes
-Large model files and environments are excluded via .gitignore
-Dataset files may be excluded depending on size
-System is modular and easily extensible
-Summary
+---
 
-This project demonstrates how to build a reliable AI system by combining structured data processing with language models, rather than relying on generation alone.
+## Engineering Highlights
+
+- Hybrid AI system combining LLM + structured data  
+- Deterministic computation eliminates hallucinations  
+- LoRA fine-tuning for domain-specific responses  
+- Modular architecture with clear separation of concerns  
+- Fully debuggable pipeline  
+
+---
+
+## Summary
+
+This project demonstrates how to build reliable AI systems by combining structured data processing with language models instead of relying on generation alone.
