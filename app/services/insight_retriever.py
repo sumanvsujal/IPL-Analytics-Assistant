@@ -9,6 +9,9 @@ Query:        Used programmatically via retrieve_insights()
 """
 
 import json, pickle
+import os
+import re
+import logging
 from pathlib import Path
 import numpy as np
 
@@ -103,7 +106,17 @@ def retrieve_insights(query: str, top_k: int = 3) -> list[dict]:
     Returns list of dicts with 'insight', 'category', 'score', 'entities'.
     Falls back to keyword matching if FAISS is unavailable.
     """
-    model = _get_model()
+    if os.getenv("INSIGHT_SEARCH", "keyword").lower() != "semantic":
+        return _keyword_fallback(query, top_k)
+
+    # Fallback: keyword matching
+    try:
+        model = _get_model()
+        if model != "fallback":
+            _load_index()
+    except (ImportError, OSError, RuntimeError):
+        logging.getLogger(__name__).warning("Semantic search unavailable; using keyword search")
+        return _keyword_fallback(query, top_k)
 
     # Fallback: keyword matching
     if model == "fallback":
@@ -130,17 +143,18 @@ def retrieve_insights(query: str, top_k: int = 3) -> list[dict]:
 def _keyword_fallback(query: str, top_k: int) -> list[dict]:
     """Simple keyword overlap scoring when vector search is unavailable."""
     insights = load_insights()
-    q_words = set(query.lower().split())
+    stop = {"the", "a", "an", "is", "are", "what", "why", "does", "how", "in", "of", "and", "to", "ipl", "important", "mean"}
+    q_words = set(re.findall(r"[a-z0-9]+", query.lower())) - stop
     scored = []
     for ins in insights:
-        i_words = set(ins["insight"].lower().split())
+        i_words = set(re.findall(r"[a-z0-9]+", ins["insight"].lower()))
         overlap = len(q_words & i_words)
         scored.append((overlap, ins))
     scored.sort(key=lambda x: -x[0])
     return [
         {"insight": ins["insight"], "category": ins["category"],
          "entities": ins.get("entities", {}), "score": float(score)}
-        for score, ins in scored[:top_k]
+        for score, ins in scored[:top_k] if score > 0
     ]
 
 

@@ -47,6 +47,7 @@ class RetrieveResponse(BaseModel):
 
 
 class HealthResponse(BaseModel):
+    answer_mode: str = "analytics"
     status: str
     model_loaded: bool
     adapter_exists: bool

@@ -13,6 +13,7 @@ Endpoints:
 """
 
 import json
+import os
 import time
 import logging
 from pathlib import Path
@@ -40,26 +41,13 @@ _DATA_DIR = _PROJECT / "data" / "analytics"
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Load model at startup unless `LOAD_MODEL` is explicitly false.
+    """Use model-free analytics by default; local model loading is opt-in."""
+    load_model_flag = os.getenv("LOAD_MODEL", "false").lower() in ("1", "true", "yes")
+    use_api = bool(os.getenv("HF_API_KEY", ""))
 
-    Set environment variable `LOAD_MODEL=false` to skip heavy model loading
-    during deployment/build. Use the admin `/admin/load_model` endpoint to
-    load the model later when a GPU is available.
-    
-    If HF_API_KEY is set, the API will be used for generation instead
-    of loading the local model.
-    """
-    load_model_flag = True
-    use_api = False
-    try:
-        import os
-        load_model_flag = os.getenv("LOAD_MODEL", "true").lower() in ("1", "true", "yes")
-        use_api = bool(os.getenv("HF_API_KEY", ""))
-    except Exception:
-        load_model_flag = True
-        use_api = False
-
-    if use_api:
+    if os.getenv("ANSWER_MODE", "analytics").lower() != "llm":
+        logger.info("Using built-in analytics answers; no model required")
+    elif use_api:
         logger.info("✓ Using HuggingFace Inference API for generation (HF_API_KEY is set)")
     elif load_model_flag:
         try:
@@ -95,9 +83,11 @@ app.add_middleware(
 
 @app.get("/health", response_model=HealthResponse)
 def health():
-    """System status: model loaded, data available, table counts."""
+    """System status including active answer mode and bundled data counts."""
     model_loaded = False
     try:
+        if os.getenv("ANSWER_MODE", "analytics").lower() != "llm":
+            raise ImportError("Model-free analytics mode")
         from app.services.generator import _MODEL
         model_loaded = _MODEL is not None
     except Exception:
@@ -112,6 +102,7 @@ def health():
 
     return HealthResponse(
         status="ok",
+        answer_mode=os.getenv("ANSWER_MODE", "analytics").lower(),
         model_loaded=model_loaded,
         adapter_exists=_ADAPTER_DIR.exists(),
         analytics_data_exists=_DATA_DIR.exists(),
@@ -127,8 +118,7 @@ def health():
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
     """
-    Full hybrid answer: route → retrieve → generate.
-    Requires the LLM to be loaded.
+    Route → retrieve → answer. Analytics mode requires no LLM.
     """
     start = time.time()
 

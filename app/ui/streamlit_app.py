@@ -1,10 +1,16 @@
+from pathlib import Path
+import sys
+
+# Streamlit executes this file directly; make package imports independent of cwd.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 import streamlit as st
-import requests
 import os
 import pandas as pd
+from app.ui.backend import call_api
 
-# Get API URL from environment variable, default to local for development
-API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
+# Optional separate backend; unset API_URL runs the analytics in this process.
+API_URL = os.getenv("API_URL", "")
 
 # Page configuration
 st.set_page_config(
@@ -138,9 +144,7 @@ st.markdown("""
 @st.cache_data(ttl=10)
 def check_api_health():
     try:
-        r = requests.get(f"{API_URL}/health", timeout=5)
-        if r.status_code == 200:
-            return r.json()
+        return call_api("/health")
     except Exception:
         pass
     return None
@@ -148,7 +152,7 @@ def check_api_health():
 # Render Sidebar
 def render_sidebar(health_data):
     with st.sidebar:
-        st.image("https://img.icons8.com/papercut/120/cricket.png", width=70)
+        st.markdown("# 🏏")
         st.markdown("### IPL Analytics Hub")
         st.markdown("Explore player stats, historical venue profiles, match phases, and head-to-head match-up details.")
         
@@ -156,7 +160,9 @@ def render_sidebar(health_data):
         st.markdown("---")
         st.markdown("#### System Health")
         if health_data:
-            if health_data.get("model_loaded"):
+            if health_data.get("answer_mode") == "analytics":
+                st.markdown("⚡ Analytics answers · no model required")
+            elif health_data.get("model_loaded"):
                 st.markdown('<div class="status-badge status-online">🟢 LLM Generator: Online</div>', unsafe_allow_html=True)
             else:
                 st.markdown('<div class="status-badge status-offline">⚡ Retrieval-Only Mode (CPU)</div>', unsafe_allow_html=True)
@@ -191,7 +197,7 @@ def render_sidebar(health_data):
 st.markdown("""
 <div class="header-box">
     <h1 class="header-title">🏏 IPL Analytics Assistant</h1>
-    <p class="header-subtitle">Domain-Specific RAG System powered by clean Parquet data, pre-computed cricket analytics, and semantic insights.</p>
+    <p class="header-subtitle">Domain-Specific RAG System powered by clean Parquet data, pre-computed cricket analytics, and searchable historical insights.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -220,9 +226,7 @@ if ask_clicked and query.strip():
         # 1. Fetch retrieval debug traces in parallel first (always safe/fast)
         retrieve_data = None
         try:
-            r_ret = requests.post(f"{API_URL}/debug/retrieve", json={"query": query}, timeout=15)
-            if r_ret.status_code == 200:
-                retrieve_data = r_ret.json()
+            retrieve_data = call_api("/debug/retrieve", {"query": query})
         except Exception as e:
             st.error(f"Failed to query retrieval layer: {e}")
             
@@ -231,14 +235,12 @@ if ask_clicked and query.strip():
         use_llm_fallback = True
         
         # Only call /chat if the model is active or we want to try it
-        if health_info and health_info.get("model_loaded"):
+        if health_info and (health_info.get("answer_mode") == "analytics" or health_info.get("model_loaded")):
             try:
-                r_chat = requests.post(f"{API_URL}/chat", json={"query": query}, timeout=120)
-                if r_chat.status_code == 200:
-                    chat_data = r_chat.json()
-                    use_llm_fallback = False
+                chat_data = call_api("/chat", {"query": query})
+                use_llm_fallback = False
             except Exception:
-                pass # Fail silently, fall back to retrieval visualization
+                st.warning("The answer could not be prepared. Retrieved facts are shown below.")
         
         if retrieve_data:
             intent = retrieve_data.get("intent", "general")
@@ -250,7 +252,7 @@ if ask_clicked and query.strip():
             
             if not use_llm_fallback and chat_data:
                 # Beautiful card for LLM answer
-                st.info(chat_data.get("answer"))
+                st.markdown(chat_data.get("answer"))
             else:
                 # LLM offline: Render our beautiful custom Structured / Context visualization
                 st.markdown(

@@ -15,7 +15,14 @@ from app.services.context_builder import build_context
 
 
 def _lazy_generate_answer(query: str, context: str, intent: str):
-    from app.services.generator import generate_answer
+    import os
+    mode = os.getenv("ANSWER_MODE", "analytics").lower()
+    if mode == "analytics":
+        from app.services.analytics_answer import generate_answer
+    elif mode == "llm":
+        from app.services.generator import generate_answer
+    else:
+        raise ValueError("ANSWER_MODE must be analytics or llm")
     return generate_answer(query, context, intent=intent)
 
 

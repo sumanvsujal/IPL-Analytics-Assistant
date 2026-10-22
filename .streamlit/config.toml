@@ -7,9 +7,9 @@ font = "sans serif"
 
 [client]
 showErrorDetails = true
-maxUploadSize = 200
 
 [server]
+maxUploadSize = 200
 headless = true
 runOnSave = true
 port = 8501

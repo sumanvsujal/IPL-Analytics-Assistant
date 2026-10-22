@@ -1,0 +1,9 @@
+# Optional: only for ANSWER_MODE=llm or INSIGHT_SEARCH=semantic
+-r requirements.txt
+torch>=2.5
+transformers>=4.45,<5
+peft>=0.12
+accelerate>=0.34
+bitsandbytes>=0.43
+sentence-transformers>=2.7
+faiss-cpu>=1.7.4
