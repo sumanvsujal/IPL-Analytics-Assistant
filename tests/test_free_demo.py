@@ -36,6 +36,28 @@ class FreeDemoTests(unittest.TestCase):
         self.assertIn("couldn't find", chat(ChatRequest(query="zzzzzzzzzz")).answer)
         self.assertNotIn("Captains should", generate_answer("matchup", "Interpretation Hints:\nCaptains should target this matchup.", "matchup"))
 
+    def test_powerplay_comparison_does_not_claim_career_totals_are_phase_stats(self):
+        query = "Is rohit sharma a better batter to Virat Kohli in powerplay?"
+        answer = chat(ChatRequest(query=query)).answer
+        self.assertIn("cannot determine who is better in that phase", answer)
+        self.assertIn("overall career comparison only", answer)
+        self.assertIn("V Kohli leads", answer)
+        self.assertIn("RG Sharma leads", answer)
+        self.assertIn("How to read this", answer)
+        self.assertIn("percentage points", answer)
+
+    def test_phase_entities_require_whole_words(self):
+        from app.services.query_router import extract_entities
+        self.assertEqual(extract_entities("Compare Kohli and Rohit")['phases'], [])
+        self.assertEqual(extract_entities("Compare Kohli and Rohit in powerplay")['phases'], ['Powerplay'])
+        self.assertEqual(extract_entities("powerplays")['phases'], [])
+
+    def test_metric_question_leads_with_requested_metric(self):
+        answer = chat(ChatRequest(query="Compare Rohit and Kohli boundary percentage")).answer
+        self.assertTrue(answer.startswith("**Boundary-ball percentage: RG Sharma leads"))
+        self.assertIn("17.68%", answer)
+        self.assertIn("1.36 percentage points", answer)
+
     def test_semantic_failure_uses_keyword_search(self):
         from app.services.insight_retriever import retrieve_insights
         with patch.dict(os.environ, {"INSIGHT_SEARCH": "semantic"}), \

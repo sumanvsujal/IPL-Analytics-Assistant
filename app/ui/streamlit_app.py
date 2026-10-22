@@ -270,18 +270,18 @@ if ask_clicked and query.strip():
             
             # --- Rendering Entity Tags ---
             st.markdown("---")
-            st.markdown("#### Identified Entities")
-            cols = st.columns(5)
-            with cols[0]:
-                st.markdown(f"**🏏 Batters:** {', '.join(entities.get('batters', [])) or 'None'}")
-            with cols[1]:
-                st.markdown(f"**🥎 Bowlers:** {', '.join(entities.get('bowlers', [])) or 'None'}")
-            with cols[2]:
-                st.markdown(f"**📅 Seasons:** {', '.join(map(str, entities.get('seasons', []))) or 'None'}")
-            with cols[3]:
-                st.markdown(f"**🏟 Venues:** {', '.join(entities.get('venues', [])) or 'None'}")
-            with cols[4]:
-                st.markdown(f"**⏱ Phases:** {', '.join(entities.get('phases', [])) or 'None'}")
+            with st.expander("How the question was understood"):
+                cols = st.columns(5)
+                with cols[0]:
+                    st.markdown(f"**🏏 Batters:** {', '.join(entities.get('batters', [])) or 'None'}")
+                with cols[1]:
+                    st.markdown(f"**🥎 Bowlers:** {', '.join(entities.get('bowlers', [])) or 'None'}")
+                with cols[2]:
+                    st.markdown(f"**📅 Seasons:** {', '.join(map(str, entities.get('seasons', []))) or 'None'}")
+                with cols[3]:
+                    st.markdown(f"**🏟 Venues:** {', '.join(entities.get('venues', [])) or 'None'}")
+                with cols[4]:
+                    st.markdown(f"**⏱ Phases:** {', '.join(entities.get('phases', [])) or 'None'}")
 
             # --- Rendering Interactive Charts & Metrics based on data ---
             structured_results = retrieve_data.get("structured_results", [])

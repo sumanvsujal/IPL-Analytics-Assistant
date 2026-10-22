@@ -14,11 +14,12 @@ from app.services.insight_retriever import retrieve_insights
 from app.services.context_builder import build_context
 
 
-def _lazy_generate_answer(query: str, context: str, intent: str):
+def _lazy_generate_answer(query: str, context: str, intent: str, structured=None, entities=None):
     import os
     mode = os.getenv("ANSWER_MODE", "analytics").lower()
     if mode == "analytics":
         from app.services.analytics_answer import generate_answer
+        return generate_answer(query, context, intent=intent, structured=structured, entities=entities)
     elif mode == "llm":
         from app.services.generator import generate_answer
     else:
@@ -167,7 +168,7 @@ def answer_query(query: str, verbose: bool = False) -> dict:
     )
 
     # ── Generation (intent-aware) ──
-    answer = _lazy_generate_answer(query, context, intent)
+    answer = _lazy_generate_answer(query, context, intent, structured, entities)
 
     result = {"answer": answer}
     if verbose:

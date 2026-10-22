@@ -59,7 +59,7 @@ def extract_entities(query: str) -> dict:
     # ── Phases ──
     ql = query.lower()
     for p in _PHASE_NAMES:
-        if p in ql:
+        if re.search(r"\b" + re.escape(p) + r"\b", ql):
             canon = "Powerplay" if "power" in p else "Death" if "death" in p else "Middle"
             if canon not in ents["phases"]:
                 ents["phases"].append(canon)
